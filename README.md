@@ -21,7 +21,17 @@ source do-token.sh
 terraform init
 terraform plan
 terraform apply -auto-approve
+terraform output
 
+## Connect to the host instance
+
+ssh -i ~/.ssh/id_rsa_quick_mail_server root@$(terraform output -json | jq -r .mailserver.value.ipv4)
+
+## Troubleshooting
+
+Error: Error creating droplet: POST https://api.digitalocean.com/v2/droplets: 404 (request "b827ab49-5a09-4b28-aac1-38ee6e4f0265") subnet status is not available
+
+This means the Default VPC for the region has not being created just yet, retry in a few minutes.
 
 ### [Digital Ocean Referral Program](https://m.do.co/c/906edecb7fdc)
 
