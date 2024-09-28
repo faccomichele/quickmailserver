@@ -1,23 +1,18 @@
-variable "inbound-ports" {
-  type    = list(string)
-  default = [ "22", "80", "443" ]
-}
-
 # Create a new SSH key
 resource "digitalocean_ssh_key" "mailserver" {
-  name       = "Quick Mail Server"
+  name       = "quick-mail-server"
   public_key = file("/home/faccomichele/.ssh/id_rsa_quick_mail_server.pub")
 }
 
 # Create a new Droplet using the SSH key
 resource "digitalocean_droplet" "mailserver" {
   image     = "ubuntu-24-04-x64"
-  name      = "quick-mail-server"
+  name      = "mail.${var.subdomain}.${var.domain-name}"
   region    = "sgp1"
   size      = "s-1vcpu-1gb-amd"
   ssh_keys  = [digitalocean_ssh_key.mailserver.fingerprint]
   ipv6      = true
-  tags      = [ "terraform", "quick_mail_server" ]
+  tags      = [ "terraform", "quick-mail-server" ]
   user_data = file("user-data.sh")
 }
 

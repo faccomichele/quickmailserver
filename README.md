@@ -20,12 +20,18 @@ source do-token.sh
 
 terraform init
 terraform plan
-terraform apply -auto-approve
+terraform apply -auto-approve -var "domain-name=example.com"
 terraform output
 
 ## Connect to the host instance
 
 ssh -i ~/.ssh/id_rsa_quick_mail_server root@$(terraform output -json | jq -r .mailserver.value.ipv4)
+
+## Test DNS Records
+
+dig @1.1.1.1 +short MX test.example.com
+dig @1.1.1.1 +short A mail.test.example.com
+dig @1.1.1.1 +short -x IP_ADDRESS_FROM_A_QUERY_ABOVE
 
 ## Troubleshooting
 
