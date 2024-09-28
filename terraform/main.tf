@@ -1,7 +1,7 @@
 # Create a new SSH key
 resource "digitalocean_ssh_key" "mailserver" {
   name       = "quick-mail-server"
-  public_key = file("/home/faccomichele/.ssh/id_rsa_quick_mail_server.pub")
+  public_key = file("~/.ssh/id_rsa_quick_mail_server.pub")
 }
 
 # Create a new Droplet using the SSH key

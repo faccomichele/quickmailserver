@@ -39,3 +39,4 @@ terraform.rc
 
 # Digital Ocean Token File
 do-token.sh
+.env

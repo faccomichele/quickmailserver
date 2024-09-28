@@ -1,6 +1,6 @@
 variable "inbound-ports" {
   type    = list(string)
-  default = [ "22", "143", "465", "587", "993" ]
+  default = [ "22", "80", "143", "465", "587", "993" ]
 }
 
 variable "domain-name" {
