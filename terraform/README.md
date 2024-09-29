@@ -31,11 +31,9 @@ terraform output
 
 # Connect to the host instance
 
-You want to install `jq` before running the below!
+**_NOTE_:** You want to install `jq` before running these scripts!
 
-```bash
-ssh -i ~/.ssh/id_rsa_quick_mail_server root@$(terraform output -json | jq -r .mailserver.value.ipv4)
-```
+All the scripts are located under the utils folder
 
 # Test DNS Records
 

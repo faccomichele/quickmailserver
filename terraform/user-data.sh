@@ -11,9 +11,11 @@ sudo chmod +x /usr/bin/docker-compose
 
 cd /opt && git clone https://github.com/faccomichele/quickmailserver.git && cd quickmailserver/docker
 
+DOMAIN=$(hostname -f | cut -d '.' -f2-)
 echo "HOSTNAME=$(hostname -f)" > .env
+echo "DOMAIN=$DOMAIN" >> .env
 docker-compose up -d
 
-DOMAIN=$(hostname -f | cut -d '.' -f2-)
-# docker-compose exec mailserver setup email add admin@$DOMAIN
-# docker-compose exec mailserver setup email add info@$DOMAIN
+SECURE_PASSWORD=$(openssl rand -base64 32)
+docker-compose exec mailserver setup email add admin@$DOMAIN $SECURE_PASSWORD
+docker-compose exec mailserver setup email add info@$DOMAIN $SECURE_PASSWORD
