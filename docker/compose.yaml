@@ -4,13 +4,13 @@ services:
   certbot:
     image: certbot/certbot
     container_name: certbot
-    port:
+    ports:
     - 80:80
     volumes:
     - certbot-etc:/etc/letsencrypt
     - ./docker-data/certbot/logs/:/var/log/letsencrypt/
     command: certonly --standalone -d ${HOSTNAME}
-    
+
   mailserver:
     depends_on:
     - certbot
