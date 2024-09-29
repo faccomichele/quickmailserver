@@ -9,7 +9,7 @@ services:
     volumes:
     - certbot-etc:/etc/letsencrypt
     - ./docker-data/certbot/logs/:/var/log/letsencrypt/
-    command: certonly -n --agree-tos --email admin@${DOMAIN}--standalone -d ${HOSTNAME}
+    command: certonly -n --agree-tos --email admin@${DOMAIN} --standalone -d ${HOSTNAME}
 
   mailserver:
     depends_on:
