@@ -2,7 +2,7 @@
 
 set -xe
 
-sudo apt update # && sudo apt upgrade -y
+sudo apt update -y && sudo DEBIAN_FRONTEND=noninteractive apt upgrade -y
 
 sudo apt install docker.io git -y
 
