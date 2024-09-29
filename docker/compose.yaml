@@ -19,7 +19,7 @@ services:
     # Provide the FQDN of your mail server here (Your DNS MX record should point to this value)
     hostname: ${HOSTNAME}
     environment:
-      - SSL_TYPE=letsencrypt
+    - SSL_TYPE=letsencrypt
     env_file: mailserver.env
     # More information about the mail-server ports:
     # https://docker-mailserver.github.io/docker-mailserver/latest/config/security/understanding-the-ports/

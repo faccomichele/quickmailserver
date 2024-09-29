@@ -1,5 +1,7 @@
 # quickmailserver
-Quick Mail Server Setup
+
+Quick Mail Server Setup. This is based on this doc: https://docker-mailserver.github.io/docker-mailserver/latest/usage/
+
 
 ## [Digital Ocean Referral Program](https://m.do.co/c/906edecb7fdc)
 
